@@ -1,20 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { requireNativeView } from 'expo';
+import { StyleSheet } from 'react-native';
+
+// The whole app lives in native/ (SwiftUI). React Native only mounts it.
+const NativeApp = requireNativeView('NativeAppHost');
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <NativeApp style={StyleSheet.absoluteFill} />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -1,13 +1,18 @@
 {
   "expo": {
-    "name": "native-todo",
+    "name": "Todos",
     "slug": "native-todo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mmichels.nativetodo",
+      "infoPlist": {
+        "CFBundleDisplayName": "Todos (RN)"
+      },
+      "icon": "./assets/icon-rn.png"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,8 +23,22 @@
       },
       "predictiveBackGestureEnabled": false
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "18.0"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "inlineModules": {
+        "watchedDirectories": [
+          "native"
+        ]
+      }
     }
   }
 }

@@ -39,3 +39,7 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# standalone Xcode build output
+standalone/build/
+xcuserdata/
