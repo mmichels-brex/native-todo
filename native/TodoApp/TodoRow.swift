@@ -71,3 +71,14 @@ struct TodoRow: View {
     }
   }
 }
+
+#Preview("Rows") {
+  List {
+    TodoRow(item: TodoItem(title: "Buy oat milk"), onToggle: {}, onDelete: {})
+    TodoRow(item: TodoItem(title: "Ship the native experiment", isDone: true), onToggle: {}, onDelete: {})
+    TodoRow(
+      item: TodoItem(title: "A much longer to-do title that wraps onto a second line to check the layout"),
+      onToggle: {}, onDelete: {})
+  }
+  .modelContainer(TodoStore.preview([]))
+}

@@ -66,3 +66,11 @@ private extension View {
     }
   }
 }
+
+#Preview("Composer") {
+  VStack {
+    Spacer()
+    TodoComposer(onAdd: { print("Added:", $0) })
+  }
+  .background(Color(.systemGroupedBackground))
+}

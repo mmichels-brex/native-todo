@@ -12,7 +12,6 @@ struct TodoListView: View {
   @Query(filter: #Predicate<TodoItem> { $0.isDone }, sort: TodoItem.completedSort, animation: .snappy)
   private var completed: [TodoItem]
 
-  @AppStorage("didSeedSamples") private var didSeedSamples = false
   @State private var showCompleted = true
   @State private var completionTick = 0
 
@@ -59,7 +58,6 @@ struct TodoListView: View {
     }
     .scrollDismissesKeyboard(.interactively)
     .sensoryFeedback(.success, trigger: completionTick)
-    .onAppear(perform: seedIfNeeded)
   }
 
   private func row(for item: TodoItem) -> some View {
@@ -133,14 +131,6 @@ struct TodoListView: View {
     try? context.save()
   }
 
-  private func seedIfNeeded() {
-    guard !didSeedSamples else { return }
-    didSeedSamples = true
-    if total == 0 {
-      TodoItem.makeSamples().forEach(context.insert)
-      save()
-    }
-  }
 }
 
 private struct ProgressSummary: View {

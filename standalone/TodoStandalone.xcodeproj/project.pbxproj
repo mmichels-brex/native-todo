@@ -20,10 +20,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E06F3CEB5714DCF4B3294BC4 /* ../native/TodoApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
 			path = ../native/TodoApp;
 			sourceTree = "<group>";
 		};

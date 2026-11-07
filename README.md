@@ -11,10 +11,11 @@ CocoaPods involved.
 
 That gives you two builds of one app, so you can compare them side by side:
 
-| | Build | Home screen | Title |
-|---|---|---|---|
-| ⚛️ | Expo / React Native entrypoint | **Todos (RN)** | To-Dos · RN |
-| 🐦 | Pure native, from Xcode | **Todos (Native)** | To-Dos · Native |
+| ⚛️ React Native entrypoint: **Todos (RN)** | 🐦 Pure native, from Xcode: **Todos (Native)** |
+|:---:|:---:|
+| <img src="docs/screenshots/rn.png" width="276" alt="The app hosted by the React Native entrypoint"> | <img src="docs/screenshots/native.png" width="276" alt="The same app built as a standalone native app"> |
+
+Same Swift code in both; only the title suffix, app name and icon differ.
 
 ## How it fits together
 
@@ -54,6 +55,23 @@ npx expo run:ios
 If `pod install` fails with a Unicode/ASCII-8BIT error, run
 `export LANG=en_US.UTF-8` first. Swift changes need a native rebuild
 (`npx expo run:ios`); a Metro reload won't pick them up.
+
+## Iterating with Xcode Previews
+
+There's no Fast Refresh for Swift, so use Xcode Previews for UI work. Open
+`standalone/TodoStandalone.xcodeproj`, open any file in `native/TodoApp/`
+and show the canvas (⌥⌘↩). Previews run on an in-memory store, so they never
+touch the app's real data:
+
+- `TodoRootView`: sample to-dos, empty state, all done
+- `TodoRow`: active, completed and long-title rows
+- `TodoComposer`: the add field on its own
+
+To preview your own data, pass items to the in-memory store:
+`TodoRootView(container: TodoStore.preview([TodoItem(title: "…")]))`.
+
+Rebuild the RN app only to check that the native app still works inside
+the RN entrypoint.
 
 ## Ground rules
 
